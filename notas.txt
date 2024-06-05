@@ -356,3 +356,88 @@ capacidades de declaración múltiple.
 Usa type cuando necesites definir tipos complejos o utilizar 
 características avanzadas como uniones y tuplas.
 
+any hay que trata de evitarlo,any
+recibe cualquier tipo de dato,para
+usar any es lo mismo que usar 
+solamente javascript
+
+si no le ponemos tipos de datos a 
+las variables, typescript infiere
+el tipo de datos del que se trata.
+
+Pero podemos sobreescribirlo más 
+abajo.
+
+Si no le damos ningun tipo de datos 
+infiere que es any
+
+
+
+Diferencia entre interface y type
+
+
+Las interfaces permiten la extensión, lo que significa que una interfaz puede 
+extender otra interfaz. Esto permite la creación de jerarquías de tipos.
+
+interface Animal {
+    nombre: string;
+}
+
+interface Perro extends Animal {
+    raza: string;
+}
+
+Las interfaces se pueden implementar en clases, asegurando que una clase cumpla con la
+estructura definida por la interfaz.
+
+interface Volador {
+    volar(): void;
+}
+
+class Pajaro implements Volador {
+    volar() {
+        console.log("El pájaro vuela");
+    }
+}
+
+Se pueden declarar múltiples veces y TypeScript automáticamente las unirá en 
+una sola interfaz.
+
+
+type se usa para crear alias de tipos. Puede ser útil para crear un nombre más 
+descriptivo para un tipo complejo.
+
+type permite la creación de tipos utilizando uniones (|) e intersecciones (&), lo que proporciona 
+flexibilidad adicional en la definición de tipos.
+
+type Mascota = Perro | Gato;
+
+type Perro = {
+    nombre: string;
+    raza: string;
+};
+
+type Gato = {
+    nombre: string;
+    color: string;
+};
+
+Con type, se pueden componer tipos complejos mediante la combinación de otros tipos.
+
+type Animal = {
+    nombre: string;
+};
+
+type Volador = Animal & {
+    volar(): void;
+};
+Resumen de diferencias
+
+Extensión: interface se usa típicamente cuando necesitas extender (heredar) tipos, 
+ya que admite la extensión y la implementación en clases.
+
+Alias de tipos complejos: type es más adecuado para crear alias de tipos, 
+especialmente cuando se necesita usar uniones e intersecciones de tipos.
+
+Fusión de declaraciones: Las interfaces pueden declararse varias veces y se 
+fusionarán, mientras que los tipos no permiten esta característica.
