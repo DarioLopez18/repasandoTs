@@ -1,0 +1,358 @@
+Es un lenguaje de programación de código abierto para extender JavaScript. Tipado estáticamente. Creado para hacer aplicaciones JavaScript más robustas.
+
+Con typescript es javascript pero con tipado, mas estricto, menos flexible. Sirve también para react y angular. 
+
+Typescript corre sobre node 
+
+cuando compila el typescript se convierte en javascript. npm i -g typescript 
+
+Comando para instalar typescript:  npm i -g typescript 
+
+tsc .\script.ts para compilar ts
+
+El modo observador observa los cambios y genera la compilación 
+automáticamente en js. 
+
+tsc .\script.ts -w para el modo observador
+
+tsc -init para iniciar un proyecto typescript.
+
+tsc -w hace un watch para todos los archivos
+
+el uso estricto hace más estricto el chequeo. 
+
+Tipos de datos:
+
+    -Primitivos:
+        - String
+        - Number
+        - Boolean
+        - Undefined
+        - Null 
+    -Compuestos estructurados:
+        -Object
+        -Array
+        -Enum
+        -Function
+    -Definido por usuario:
+        -Class
+        -Interface
+        -Type
+
+String
+
+// Comillas dobles:
+const str1: string = "Hola, soy una cadena con comillas dobles.";
+
+// Comillas simples:
+const str2: string = 'Hola, soy una cadena con comillas simples.';
+
+// Template literals (backticks):
+const nombre: string = 'Juan';
+const edad: number = 30;
+
+const str3: string = `Hola, mi nombre es ${nombre} y tengo ${edad} años.`;
+
+Number
+
+const num1: number = 10;
+
+// Notación exponencial:
+const num3: number = 2.5e3; // 2.5 * 10^3 = 2500
+
+// Notación exponencial negativa:
+const num4: number = 1.5e-2; // 1.5 * 10^-2 = 0.015
+
+// Hexadecimales (base 16) utilizando el prefijo "0x":
+const num5: number = 0xA; // Valor decimal: 10
+
+// Octales (base 8) utilizando el prefijo "0o":
+const num6: number = 0o12; // Valor decimal: 10
+
+// Binarios (base 2) utilizando el prefijo "0b":
+const num7: number = 0b1010; // Valor decimal: 10
+
+// BOOLEANS
+
+// Valor booleano true:
+const bool1: boolean = true;
+
+// Valor booleano false:
+const bool2: boolean = false;
+
+
+// UNDEFINED
+
+// Declaración de una variable con valor undefined
+let variableUndefined: undefined;
+
+// Asignación de valor undefined
+variableUndefined = undefined;
+
+// NULL
+
+// Declaración de una variable con valor null
+let variablenull: null;
+
+// Asignación de valor null
+variablenull = null;
+
+
+// OBJETO
+
+const programador = {
+    nombre: "Sergie Code",
+    casado: false,
+    cursosEnYoutube: 4,
+    cursos: ['HTML', 'CSS', 'JAVASCRIPT', 'REACT'],
+    viajeAEuropa: undefined,
+    viajeAEstadosUnidos: null
+};
+
+
+// ARRAYS 
+
+// Arreglo de números:
+const numeros: number[] = [1, 2, 3, 4, 5];
+
+// Arreglo de cadenas de texto:
+const nombres: string[] = ["Juan", "María", "Pedro"];
+
+// Arreglo de booleanos:
+const valoresBool: boolean[] = [true, false, true];
+
+//etc (ya los veremos)
+
+
+// ENUM
+
+// Definición de un enum para días de la semana
+enum DiasSemana {
+    Lunes,
+    Martes,
+    Miércoles,
+    Jueves,
+    Viernes,
+    Sábado,
+    Domingo,
+  }
+
+
+//   Enum con valores de cadena (String Enums):
+  enum Colores {
+    Rojo = "rojo",
+    Verde = "verde",
+    Azul = "azul",
+  }
+
+
+// FUNCIONES
+
+// Declaración de función con tipado explícito:
+function sumar(a: number, b: number): number {
+  return a + b;
+}
+
+// Funciones flecha con retorno implícito (inferido por TypeScript):
+const dividir = (a: number, b: number) => a / b;
+
+// Funciones con parámetros opcionales:
+function saludar(nombre: string, edad?: number): string {
+  if (edad !== undefined) {
+    return `Hola, mi nombre es ${nombre} y tengo ${edad} años.`;
+  } else {
+    return `Hola, mi nombre es ${nombre}.`;
+  }
+}
+
+// Funciones con parámetros por defecto:
+function saludar2(nombre: string, edad: number = 30): string {
+  return `Hola, mi nombre es ${nombre} y tengo ${edad} años.`;
+}
+
+// CLASES
+
+class Persona {
+    nombre: string;
+
+    constructor(nombre: string) {
+        this.nombre = nombre;
+    }
+
+    saludar() {
+        console.log(`Hola, mi nombre es ${this.nombre}.`);
+    }
+}
+
+// INTERFACES
+
+// Interface básica:
+interface Persona {
+  nombre: string;
+  edad: number;
+}
+
+// Interface con propiedades opcionales:
+interface Producto {
+  nombre: string;
+  precio: number;
+  descripcion?: string;
+}
+
+// Interface para funciones:
+interface Comparador {
+  (a: number, b: number): boolean;
+}
+
+// Interface para clases (class interfaces):
+interface Persona {
+  nombre: string;
+  edad: number;
+  saludar(): void;
+}
+
+// TYPES
+
+
+// Type básico:
+type Numero = number;
+
+// Type básico Objeto Literal:
+type Persona1 = {
+    nombre: string;
+    edad: number;
+}
+
+// Type con union types:
+type Nombre = string | null;
+
+// Type con propiedades opcionales:
+type Producto1 = {
+    nombre: string;
+    precio: number;
+    descripcion?: string;
+}
+
+// Type para funciones:
+type Comparador1 = {
+    (a: number, b: number): boolean;
+}
+
+// Type para clases (class Types):
+type Persona2 = {
+    nombre: string;
+    edad: number;
+    saludar(): void;
+}
+
+Para poder hacer el tipado de un objeto vamos a necesitar hacer
+una interface o un type
+
+
+? se utiliza para marcar que es opcional. 
+
+
+1. Sintaxis y Uso Básico
+Type: Se utiliza para definir tipos personalizados, 
+incluyendo uniones, intersecciones y tipos complejos.
+
+type MyType = {
+  name: string;
+  age: number;
+};
+
+
+Interface: Se utiliza principalmente para describir la 
+forma de un objeto, es decir, los nombres y tipos de las 
+propiedades que debe tener un objeto.
+
+interface MyInterface {
+  name: string;
+  age: number;
+}
+
+Interface: Las interfaces son extensibles. Pueden ser 
+extendidas por otras interfaces o incluso pueden declararse 
+varias veces y sus declaraciones se unirán automáticamente.
+
+interface MyInterface {
+  name: string;
+}
+
+interface MyInterface {
+  age: number;
+}
+
+// MyInterface ahora tiene ambas propiedades: name y age
+
+interface ExtendedInterface extends MyInterface {
+  email: string;
+}
+
+Type: Los tipos pueden ser extendidos usando intersecciones (&),
+pero no se pueden redefinir múltiples veces como las interfaces.
+
+type MyType = {
+  name: string;
+};
+
+type ExtendedType = MyType & {
+  age: number;
+};
+
+Type: Puede definir tipos complejos como uniones, tuplas, etc.
+
+type StringOrNumber = string | number;
+type TupleType = [string, number];
+
+Interface: No puede definir directamente uniones o tuplas.
+
+Interface: Las interfaces pueden ser implementadas por 
+clases usando la palabra clave implements.
+
+interface MyInterface {
+  name: string;
+  age: number;
+}
+
+class Person implements MyInterface {
+  name: string;
+  age: number;
+
+  constructor(name: string, age: number) {
+    this.name = name;
+    this.age = age;
+  }
+}
+
+
+Type: No pueden ser implementados por clases directamente.
+
+type MyType = {
+  name: string;
+  age: number;
+};
+
+// class Person implements MyType { // Esto dará error
+//   ...
+// }
+
+Type: Puede declarar tipos de funciones.
+
+type MyFunction = (x: number) => string;
+
+Interface: También puede declarar tipos de funciones,
+pero con una sintaxis ligeramente diferente.
+
+interface MyFunction {
+  (x: number): string;
+}
+
+
+Usa interface cuando necesites definir la estructura de un 
+objeto y quieras aprovechar la extensibilidad y las 
+capacidades de declaración múltiple.
+
+Usa type cuando necesites definir tipos complejos o utilizar 
+características avanzadas como uniones y tuplas.
+
